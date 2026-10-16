@@ -1,0 +1,7 @@
+CREATE TABLE residents(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    flat_number VARCHAR(50) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
