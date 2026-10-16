@@ -21,6 +21,9 @@ public class ResidentService {
     @Autowired
     private ResidentJdbcRepository residentJdbcRepository;
 
+    @Autowired 
+    private NotificationService notificationService;
+
     @CacheEvict (value = "residents", allEntries = true)
     public ResidentResponseDTO createResident(ResidentRequestDTO request) {
         Resident resident = new Resident(
@@ -30,6 +33,8 @@ public class ResidentService {
                 request.getEmail()
         );
         Resident saved = residentJdbcRepository.save(resident);
+
+        notificationService.sendWelcomeNotification(saved.getName(), saved.getEmail());
         return toResponseDTO(saved);
     }
 

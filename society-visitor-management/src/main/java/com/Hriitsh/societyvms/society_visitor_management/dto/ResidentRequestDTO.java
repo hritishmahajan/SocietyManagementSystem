@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 public class ResidentRequestDTO implements Serializable {
 
     @NotBlank(message = "Name is required")
-    @Size(min = 5, max = 10, message = "Name must be between 5 to 10 characters")
+    @Size(min = 5, max = 20, message = "Name must be between 5 to 10 characters")
     private String name;
 
     @NotBlank(message = "Flat number is required")
