@@ -139,10 +139,7 @@ sequenceDiagram
     J-->>AC: JWT token
     AC-->>C: 200 OK { token, username, role }
 
-    Note over C: Client stores token,
-sends it as
-Authorization: Bearer <token>
-on every later request
+    Note over C: Client stores token, sends it as Authorization: Bearer token on every later request
 ```
 
 
