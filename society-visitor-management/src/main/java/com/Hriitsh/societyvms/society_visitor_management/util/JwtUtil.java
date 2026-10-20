@@ -8,14 +8,12 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
 
     // Demo-only secret key (normally this would come from application.properties / env variable)
-    private final SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final SecretKey secretKey = Jwts.SIG.HS256.key().build();
 
     private final long expirationMs = 1000 * 60 * 60; // 1 hour
 
