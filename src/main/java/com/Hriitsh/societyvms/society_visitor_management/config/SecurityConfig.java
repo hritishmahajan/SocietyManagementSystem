@@ -48,6 +48,7 @@ public class SecurityConfig {
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/residents/**").hasAnyRole("ADMIN", "RESIDENT")
                 .requestMatchers("/api/residents/**").hasRole("ADMIN")
                 .anyRequest().authenticated()

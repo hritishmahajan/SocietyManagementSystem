@@ -11,6 +11,7 @@ A Spring Boot proof-of-concept for managing residents and visitor requests in a 
 - **Spring Security + JWT** (stateless, role-based auth)
 - **Apache POI** (Excel import)
 - **Bean Validation** (request validation)
+- **springdoc-openapi** (Swagger UI / OpenAPI 3.1 docs)
 
 ## Architecture
 
@@ -163,6 +164,15 @@ All endpoints except `/api/auth/**` require a `Bearer <token>` in the `Authoriza
 |---|---|---|---|
 | Rahul Sharma | A-101 | rahul@test.com | 9876543210 |
 
+## API Documentation (Swagger)
+
+Interactive API docs are available once the app is running:
+
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- Raw OpenAPI 3.1 spec: http://localhost:8080/v3/api-docs
+
+Click **Authorize** (top-right) and paste the JWT token from `/api/auth/login` to test secured endpoints directly from the browser.
+
 ## Architecture Notes
 
 - **Dual persistence (JPA + JdbcTemplate):** `VisitRequestRepository` uses Spring Data JPA; `ResidentJdbcRepository` uses raw `JdbcTemplate` — kept side-by-side deliberately to demonstrate both patterns.
@@ -171,6 +181,5 @@ All endpoints except `/api/auth/**` require a `Bearer <token>` in the `Authoriza
 
 ## Known Limitations
 
-- No OpenAPI/Swagger docs — the current `springdoc-openapi` releases aren't yet compatible with Spring Boot 4 / Spring Framework 7 ([tracking issue](https://github.com/springdoc/springdoc-openapi/issues/2944)).
 - No automated test coverage beyond the generated Spring Boot context test.
 - JWT secret key is generated in-memory per app start (demo-only) — not suitable for production or multi-instance deployments.
